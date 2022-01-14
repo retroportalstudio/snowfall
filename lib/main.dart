@@ -29,7 +29,7 @@ class BarrierLayer {
   BarrierLayer(this.from, this.to, this.yPosition);
 }
 
-const double rainStrikeSize = 10, rainDropSize = 20, velocity = 50;
+const double rainStrikeSize = 20, rainDropSize = 20, velocity = 50;
 const rainDrop = RainDrop(width: rainDropSize);
 const rainStrike = RainStrike(width: rainStrikeSize);
 
@@ -52,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage>
   final GlobalKey _stackKey = GlobalKey();
   final Random _random = Random();
   late AnimationController _animationController;
-  final Size containerSize = const Size(600, 300);
-  final Size containerTwoSize = const Size(200, 200);
+  final Size containerSize = const Size(800, 400);
+  final Size containerTwoSize = const Size(400, 400);
   Size screenSize = const Size(720, 720);
   bool screenResized = false;
   Timer? timer, lastTimer;
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage>
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       screenSize = MediaQuery.of(context).size;
       timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
-        for (int number = 0; number < _random.nextInt(1000); number++) {
+        for (int number = 0; number < _random.nextInt(2000); number++) {
           double nextDouble = _random.nextDouble();
           rainDrops.add(Flake(
               Offset(_random.nextInt(screenSize.width.toInt()).toDouble(),
